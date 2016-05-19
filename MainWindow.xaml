@@ -1,0 +1,81 @@
+﻿<Window x:Class="KinectSkeletonRecorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectSkeletonRecorder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="auto" Width="auto" >
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="ConnectedKinectID">
+                <ListBox x:Name="ListBox_KinectList">
+
+                </ListBox>
+            </GroupBox>
+            <StackPanel Grid.Row="1">
+                <Button Content="Start" Margin="5" Click="Button_KinectStart_Click"/>
+            </StackPanel>
+        </Grid>
+        <GroupBox Header="Status"  DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel >
+                    <TextBlock Text="Name" />
+                    <TextBlock Text="KinectStatus" />
+                    <TextBlock Text="RecStatus" />
+                </StackPanel>
+                <StackPanel >
+                    <TextBlock Text=" : " />
+                    <TextBlock Text=" : " />
+                    <TextBlock Text=" : " />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock x:Name="Status_Name" Text=""/>
+                    <TextBlock x:Name="Status_KinectStatus" Text=""/>
+                    <TextBlock x:Name="Status_RecStatus" Text=""/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel>
+            <GroupBox Header="ColorImage">
+                <Image x:Name="Image_Color" Width="320" Height="240"></Image>
+
+            </GroupBox>
+            <GroupBox Header="DepthImage">
+                <Image x:Name="Image_depth" Width="320" Height="240"></Image>
+            </GroupBox>
+            <GroupBox Header="SkeletonInfo">
+                <TextBlock x:Name="TextBlock_SkeletonInfo" ></TextBlock>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right">
+            <GroupBox Header="SaveFolderName">
+                <StackPanel >
+                    <TextBox x:Name="TextBox_FolderPath" TextWrapping="Wrap" Text="C:\"/>
+                    <Button x:Name="Button_SelectFolderPath" Content="Select Folder" Click="Button_SelectFolderPath_Click"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="SaveFileName">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBox x:Name="TextBox_FileName" Width="200" Text="Default"/>
+                        <TextBlock x:Name="TextBox_AutoIndex" Text=""/>
+                        <TextBlock Text=".csv"/>
+                    </StackPanel>
+                    <CheckBox x:Name="CheckBox_AutoIndexNumber" Content="Auto Index" Unchecked="CheckBox_AutoIndexNumber_Unchecked" Checked="CheckBox_AutoIndexNumber_Checked"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Operation">
+                <StackPanel>
+                    <Button x:Name="Button_REC_START" Content="REC START" Click="Button_REC_START_Click"/>
+                    <Button x:Name="Button_REC_FINISH" Content="REC STOP" Click="Button_REC_FINISH_Click"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </DockPanel>
+</Window>
